@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
   }
 
   Product.find(searchPhrase, function(err, docs) {
-    res.render('shop/index', { title: 'Shopping Cart', products: maxArray(docs) });
+    res.render('shop/index', { title: 'search', products: maxArray(docs) });
   }).sort(sortBy);
 });
 
@@ -30,7 +30,7 @@ router.get('/games', function(req, res, next) {
   var searchPhrase = {  type: 'game' }
 
   Product.find(searchPhrase, function(err, docs) {
-    res.render('shop/index', { title: 'Shopping Cart', products: maxArray(docs) });
+    res.render('shop/index', { title: 'games', products: maxArray(docs) });
   }).sort(sortBy);
 });
 
@@ -38,7 +38,7 @@ router.get('/keyboards', function(req, res, next) {
   var searchPhrase = {  type: 'keyboard' }
 
   Product.find(searchPhrase, function(err, docs) {
-    res.render('shop/index', { title: 'Shopping Cart', products: maxArray(docs) });
+    res.render('shop/index', { title: 'keyboards', products: maxArray(docs)});
   }).sort(sortBy);
 });
 

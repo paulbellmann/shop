@@ -17,3 +17,9 @@
         {{/each }}
     </div>
 {{/each }}
+
+{{# if title }}
+  <script type="text/javascript">
+    $('#{{ title }}').addClass('active')
+  </script>
+{{/if}}
