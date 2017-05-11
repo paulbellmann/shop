@@ -9,7 +9,10 @@
                   <p class="description">{{ description }}</p>
                   <div class="clearfix">
                       <div class="price pull-left">{{ price }}$</div>
-                      <a href="#" class="btn btn-success pull-right" role="button">Add</a>
+                      <div class="pull-right">
+                        <a href="/info?id={{_id}}" class="btn btn-primary" role="button">Info</a>
+                        <a href="#" class="btn btn-success" role="button">Add</a>
+                      </div>
                   </div>
                 </div>
               </div>
