@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
   }
 
   Product.find(searchPhrase, function(err, docs) {
-    res.render('shop/index', { title: 'search', products: maxArray(docs) });
+    res.render('shop/index', { active: 'search', products: maxArray(docs) });
   }).sort(sortBy);
 });
 
@@ -38,7 +38,23 @@ router.get('/keyboards', function(req, res, next) {
   var searchPhrase = {  type: 'keyboard' }
 
   Product.find(searchPhrase, function(err, docs) {
-    res.render('shop/index', { title: 'keyboards', products: maxArray(docs)});
+    res.render('shop/index', { active: 'keyboards', products: maxArray(docs)});
+  }).sort(sortBy);
+});
+
+router.get('/info', function(req, res, next) {
+  var searchPhrase = {}
+
+  if (req.query['id']) {
+    searchPhrase._id = req.query['id'];
+  }
+
+  console.log(searchPhrase)
+
+  Product.find(searchPhrase, function(err, docs) {
+    // docs[0] so it will only give me the first array from the find()
+    // this way i can use {{products.title}} and dont need a {{#each prdocuts}}
+    res.render('shop/info', { active: 'keyboards', products: docs[0] });
   }).sort(sortBy);
 });
 
