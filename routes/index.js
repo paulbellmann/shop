@@ -49,13 +49,20 @@ router.get('/info', function(req, res, next) {
     searchPhrase._id = req.query['id'];
   }
 
-  console.log(searchPhrase)
-
   Product.find(searchPhrase, function(err, docs) {
     // docs[0] so it will only give me the first array from the find()
     // this way i can use {{products.title}} and dont need a {{#each prdocuts}}
     res.render('shop/info', { active: 'keyboards', products: docs[0] });
   }).sort(sortBy);
 });
+
+router.get('/list', function(req, res, next) {
+  var searchPhrase = {};  
+
+  Product.find(searchPhrase, function(err, docs) {
+    res.render('shop/list', { active: 'search', products: docs });
+  }).sort(sortBy);
+});
+
 
 module.exports = router;
