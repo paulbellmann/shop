@@ -14,6 +14,7 @@ function maxArray(docs) {
     return productChunk;
 }
 
+// SEARCH
 router.get('/', function(req, res, next) {
   var searchPhrase = {};  
 
@@ -21,11 +22,16 @@ router.get('/', function(req, res, next) {
     searchPhrase.title = {$regex: ".*" + req.query['query'] + ".*", $options: 'i'}
   }
 
+  if (req.query['ss']) {
+    searchPhrase._id = req.query['ss']
+  }
+
   Product.find(searchPhrase, function(err, docs) {
     res.render('shop/index', { active: 'search', products: maxArray(docs) });
   }).sort(sortBy);
 });
 
+// GAMES
 router.get('/games', function(req, res, next) {
   var searchPhrase = {  type: 'game' }
 
@@ -34,6 +40,7 @@ router.get('/games', function(req, res, next) {
   }).sort(sortBy);
 });
 
+// KEYBOARDS
 router.get('/keyboards', function(req, res, next) {
   var searchPhrase = {  type: 'keyboard' }
 
@@ -42,6 +49,7 @@ router.get('/keyboards', function(req, res, next) {
   }).sort(sortBy);
 });
 
+// INFO
 router.get('/info', function(req, res, next) {
   var searchPhrase = {}
 
@@ -56,11 +64,30 @@ router.get('/info', function(req, res, next) {
   }).sort(sortBy);
 });
 
+// LIST
 router.get('/list', function(req, res, next) {
   var searchPhrase = {};  
 
   Product.find(searchPhrase, function(err, docs) {
     res.render('shop/list', { active: 'search', products: docs });
+  }).sort(sortBy);
+});
+
+// API
+router.get('/quicksearch', function(req, res, next) {
+  var searchPhrase = {}
+
+  if (req.query['query']) {
+    searchPhrase.title = {$regex: ".*" + req.query['query'] + ".*", $options: 'i'}
+  }
+
+  Product.find(searchPhrase, function(err, docs) {
+    res.setHeader('Content-Type', 'application/json');
+    test = []
+    for (i=0; i < docs.length; i++) {
+      test.push({ id: docs[i]._id, text: docs[i].title})
+    }
+    res.send(test);
   }).sort(sortBy);
 });
 

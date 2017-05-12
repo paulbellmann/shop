@@ -21,8 +21,9 @@
     </div>
 {{/each }}
 
-{{# if active }}
-  <script type="text/javascript">
-    $('#{{ active }}').addClass('active')
-  </script>
-{{/if}}
+
+<script>
+  {{# if active }}
+      $('#{{ active }}').addClass('active')
+  {{/if}}
+</script>
