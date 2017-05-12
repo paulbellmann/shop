@@ -27,11 +27,39 @@ var products = [
         type: 'game'
     }),
     new Prodcut({
-        imagePath: 'https://www.rockstargames.com/V/img/global/order/GTAV-PC.jpg',
+        imagePath: 'https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png',
         title: 'Grand Theft Auto V',
         description: 'nice rpg',
         price: 20,
         type: 'game'
+    }),
+    new Prodcut({
+        imagePath: 'https://images-na.ssl-images-amazon.com/images/I/41GPhYN9ZFL._SX355_.jpg',
+        title: 'Happy Hacking Keyboard Professional2',
+        description: 'Best Topre out there',
+        price: 244.55,
+        type: 'keyboard'
+    }),
+    new Prodcut({
+        imagePath: 'https://images-na.ssl-images-amazon.com/images/I/81alii2vdhL._SL1500_.jpg',
+        title: 'Vortex KBC poker 3',
+        description: 'Ultra-kompakte mechanische Tastatur',
+        price: 135.99,
+        type: 'keyboard'
+    }),
+    new Prodcut({
+        imagePath: 'https://images-na.ssl-images-amazon.com/images/I/61U6lwIIJoL._SL1201_.jpg',
+        title: 'Razer Blackwidow Chroma',
+        description: 'RGB Beleuchtet und voll programmbierbar mit 5 Macrotasten, DE-Layout',
+        price: 164.99,
+        type: 'keyboard'
+    }),
+    new Prodcut({
+        imagePath: 'https://mechanicalkeyboards.com/shop/images/products/large_1323_DSC_1268.jpg',
+        title: 'Leopold FC660C',
+        description: 'Excellent for gaming and typing',
+        price: 229.00,
+        type: 'keyboard'
     })
 ];
 
